@@ -134,7 +134,7 @@ VALUES ("COPRO", "Co-propriétaire"),("ADMIN", "Administrateur"), ("COSYN", "Con
 
 /*hachage mdp : SHA-256 */
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
-VALUES ("Blot", "Jérôme", "0637066255","galaxymuse@gmail.com" ,"jbl", "976bfa507a8aa45f4e440201a121ea32dea14ba0a2ef5c3f7339d824c47407ed", NOW(), "Propriétaire résident" , true, "COPRO");
+VALUES ("Durand", "Paul", "0101010101","pdurande@gmail.com" ,"jbl", "976bfa507a8aa45f4e440201a121ea32dea14ba0a2ef5c3f7339d824c47407ed", NOW(), "Propriétaire résident" , true, "COPRO");
 
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
 VALUES ("Admin", "Test", "0637066255","test@gmail.com" ,"test", "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", NOW(), "Propriétaire non-résident" , true, "ADMIN");
