@@ -1,8 +1,5 @@
 CREATE DATABASE gestion_coproTilleuls DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE USER 'jbl'@'localhost' IDENTIFIED BY 'tilleuls44700';
-GRANT ALL ON gestion_coproTilleuls.* TO 'jbl'@'localhost' IDENTIFIED BY 'tilleuls44700';
-
 USE gestion_coproTilleuls;
 
 DROP TABLE RESIDENTS_APPARTEMENTS;
@@ -132,7 +129,7 @@ INSERT INTO APPARTEMENTS (num_syndic, porte, etage, batiment) VALUES
 INSERT INTO ROLES (id, libelle) 
 VALUES ("COPRO", "Co-propriétaire"),("ADMIN", "Administrateur"), ("COSYN", "Conseiller Syndical"),("GSACT","Gestionnaire d'Activités"), ("LOCAT","Locataire");
 
-/*hachage mdp : SHA-256 */
+
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
 VALUES ("Durand", "Paul", "0101010101","pdurande@gmail.com" ,"jbl", "976bfa507a8aa45f4e440201a121ea32dea14ba0a2ef5c3f7339d824c47407ed", NOW(), "Propriétaire résident" , true, "COPRO");
 
