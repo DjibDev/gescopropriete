@@ -101,7 +101,7 @@ public class Resident {
 		this.mot_de_passe = mot_de_passe;
 	}
 	public String getDate_inscription() {
-		String pattern = "dd MMMMM yyyy";
+		String pattern = "dd/MM/yyyy";
 	    SimpleDateFormat format = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
 		return format.format(date_inscription);
 	}

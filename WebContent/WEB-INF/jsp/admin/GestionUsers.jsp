@@ -2,7 +2,7 @@
 
 		<div class="row">
 		
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+			<div class="col-xl-2 col-lg-2 col-md-2">
 					<ul class="nav nav-pills nav-stacked">
 					  <li><a href="<%=request.getContextPath()%>/admin/liste_inscrits">Liste des inscrits</a></li>
 					  <li class="active"><a>Gestion des Utilisateurs</a></li>
@@ -13,7 +13,7 @@
 					</ul>
 		  	</div>
 		
-			<div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+			<div class="col-xl-10 col-lg-10 col-md-10">
 				<div id="erreurs">
 					${requestScope['generationCompteEchouee']}
 				</div>	

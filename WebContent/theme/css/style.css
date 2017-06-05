@@ -55,18 +55,16 @@ body {
 	color: red;
 	margin: auto;
 	font-size: 1.3em;
-	font-weight: bold;
 }
 
 #succes {
 	color: green;
 	margin: auto;
 	font-size: 1.3em;
-	font-weight: bold;
 }
 
 .inactif {
-	background-color:darkorange;
+	color: red;
 }
 
 input[type="number"] {

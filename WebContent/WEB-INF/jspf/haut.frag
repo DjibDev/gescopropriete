@@ -9,9 +9,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Résidence des Tilleuls</title>
-
+	<!-- chargement css  -->
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/datatables/datatables.min.css">
   	<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/bootstrap/css/bootstrap.min.css">
   	<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/css/style.css">
+ 	
+ 	<!-- chargement des scripts -->
+ 	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/jquery/jquery-2.2.3.js"></script>
+ 	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/datatables.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/datatable_lang_fr.js"></script>
+  	
+ 
   
 </head>
 <body>

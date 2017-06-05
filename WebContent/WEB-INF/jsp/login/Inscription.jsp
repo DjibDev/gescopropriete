@@ -25,7 +25,6 @@
 	</div>
 
 	<div class="container">
-		<div id="erreurs"></div>
 
 		<form class="well form-horizontal"
 			action="<%=request.getContextPath()%>/login/valider_inscription"
@@ -36,8 +35,6 @@
 				<legend>
 					<b>Inscription</b> - Veuillez rentrer vos informations
 				</legend>
-
-				<br />
 
 				<!-- Text input-->
 
@@ -76,7 +73,8 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-envelope"></i></span> <input name="email"
-								placeholder="Adresse E-mail" class="form-control" type="text">
+								id="email" placeholder="Adresse E-mail" class="form-control"
+								type="text">
 						</div>
 					</div>
 				</div>
@@ -92,7 +90,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-earphone"></i></span> <input
-								name="telephone" placeholder="0102030405" class="form-control"
+								name="telephone" id="telephone" placeholder="0102030405" class="form-control"
 								type="text">
 						</div>
 					</div>
@@ -104,21 +102,21 @@
 						class="col-xl-4 col-lg-4 col-md-4 col-sm-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-home"></i></span> <select name="porte"
+								class="glyphicon glyphicon-home"></i></span> <select name="porte" id="porte"
 								class="form-control selectpicker">
 								<option value=" ">Porte (en partant de la gauche)</option>
 								<option value="1">1ère porte</option>
 								<option value="2">2ème porte</option>
 								<option value="3">3ème porte</option>
 								<option value="4">4ème porte</option>
-							</select> <select name="etage" class="form-control selectpicker">
+							</select> <select name="etage" class="form-control selectpicker" id="etage">
 								<option value=" ">Etage</option>
 								<option value="0">RdC (ou étage 0)</option>
 								<option value="1">1er étage</option>
 								<option value="2">2ème étage</option>
 								<option value="3">3ème étage</option>
 								<option value="4">4ème étage</option>
-							</select> <select name="batiment" class="form-control selectpicker">
+							</select> <select name="batiment" class="form-control selectpicker" id="batiment">
 								<option value=" ">Bâtiment</option>
 								<option value="B1">4 Allée des Tilleuls</option>
 								<option value="B2">2 Allée des Tilleuls</option>
@@ -139,9 +137,8 @@
 					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-list"></i></span> <select name="type_res"
+								class="glyphicon glyphicon-list"></i></span> <select name="type_res" id="type_res"
 								class="form-control selectpicker">
-								<option value=" ">Veuillez sélectionner dans la liste</option>
 								<option value="1">Locataire</option>
 								<option value="2">Propriétaire résident</option>
 								<option value="3">Propriétaire non-résident</option>
@@ -151,13 +148,13 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 control-label">Identifiant</label>
+					<label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 control-label">Identifiant*</label>
 					<div
 						class="col-xl-4 col-lg-4 col-md-4 col-sm-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-log-in"></i></span> <input
-								name="identifiant" placeholder="Identifiant"
+								name="identifiant" placeholder="Identifiant" id="identifiant"
 								class="form-control" type="text">
 						</div>
 					</div>
@@ -167,12 +164,12 @@
 
 				<div class="form-group">
 					<label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 control-label">Mot
-						de passe</label>
+						de passe*</label>
 					<div
 						class="col-xl-4 col-lg-4 col-md-4 col-sm-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-lock"></i></span> <input name="password"
+								class="glyphicon glyphicon-lock"></i></span> <input name="password" id="password"
 								placeholder="Mot de Passe" class="form-control" type="password">
 						</div>
 					</div>
@@ -180,18 +177,20 @@
 
 				<div class="form-group">
 					<label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 control-label">Confirmation
-						Mot de passe</label>
+						Mot de passe*</label>
 					<div
 						class="col-xl-4 col-lg-4 col-md-4 col-sm-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-lock"></i></span> <input name="Vpassword"
+								class="glyphicon glyphicon-lock"></i></span> <input name="Vpassword" id="Vpassword"
 								placeholder="Confirmation Mot de Passe" class="form-control"
 								type="password">
 						</div>
 					</div>
 				</div>
 
+				<div align="center" id="erreurs"></div>
+				<br />
 				<!-- Button -->
 				<div class="form-group">
 					<label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 control-label"></label>
@@ -199,11 +198,12 @@
 						<button class="btn btn-primary" onclick="history.go(-1)">Retour</button>
 					</div>
 					<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
-						<button type="button" class="btn btn-success"
-							onClick="validFormInscription()">Valider</button>
+						<button type="submit" class="btn btn-success"
+							onClick="return validFormInscription()">Valider</button>
 					</div>
 				</div>
-
+				<br />
+					<span>* minimum 4 caractères, maximum 10 caractères, lettres, chiffres, "@", "_" et "&" acceptés.</span>
 			</fieldset>
 		</form>
 	</div>

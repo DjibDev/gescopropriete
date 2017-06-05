@@ -4,6 +4,6 @@
 	<comment>configuration de l'accès à la base</comment>
 	<entry key="driver">com.mysql.jdbc.Driver</entry>
 	<entry key="url">jdbc:mysql://localhost:3306/gestion_coprotilleuls</entry>
-	<entry key="user">root</entry>
-	<entry key="password">coprotil</entry>
+	<entry key="user">jbl</entry>
+	<entry key="password">tilleuls44700</entry>
 </properties>
