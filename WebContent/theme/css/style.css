@@ -1,0 +1,77 @@
+body {
+    font-size: 1.2em;
+}
+
+/* banniere et haut du site */
+#imageBanniereIndex {
+    width: 90%;
+    height: 200px;
+    border: 5px;
+    border-radius: 5px;
+    border-color: darkblue;
+}
+
+#imageBanniereAll {
+    width: 90%;
+    height: 130px;
+    border: 5px;
+    border-radius: 5px;
+    border-color: darkblue;
+}
+
+#infosUserConnecte {
+	float: left;
+	display: block;
+	font-size: 12px;
+  	margin-left: 10%;
+  	margin-right: 10%;
+}
+
+#blocBoutons {
+	float: left;
+	display: block;
+  	margin-left: 10%;
+  	margin-right: 10%;	
+}
+
+#moncompte {
+    width: 100%;
+	margin-top: 5px;
+}
+
+#deconnexion {
+     width: 100%;
+	margin-top: 5px;
+}
+
+/* formulaires */
+
+#loginForm {
+	width: 30%;
+	margin: auto;
+}
+
+#erreurs {
+	color: red;
+	margin: auto;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+#succes {
+	color: green;
+	margin: auto;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.inactif {
+	background-color:darkorange;
+}
+
+input[type="number"] {
+   width:50px;
+}
+
+
+

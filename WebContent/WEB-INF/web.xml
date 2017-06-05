@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>GesCoProTilleuls</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
+  <servlet>
+    <display-name>AfficherMenuAdmin</display-name>
+    <servlet-name>AfficherMenuAdmin</servlet-name>
+    <jsp-file>/WEB-INF/jsp/admin/AccueilAdmin.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AfficherMenuAdmin</servlet-name>
+    <url-pattern>/admin/accueil_admin_jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AfficherGestionUsers</display-name>
+    <servlet-name>AfficherGestionUsers</servlet-name>
+    <jsp-file>/WEB-INF/jsp/admin/GestionUsers.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AfficherGestionUsers</servlet-name>
+    <url-pattern>/admin/gestion_users_jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AfficherInscription</display-name>
+    <servlet-name>AfficherInscription</servlet-name>
+    <jsp-file>/WEB-INF/jsp/login/Inscription.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AfficherInscription</servlet-name>
+    <url-pattern>/login/inscription_jsp</url-pattern>
+  </servlet-mapping>
+</web-app>

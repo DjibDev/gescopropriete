@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>configuration de l'accès à la base</comment>
+	<entry key="driver">com.mysql.jdbc.Driver</entry>
+	<entry key="url">jdbc:mysql://localhost:3306/gestion_coprotilleuls</entry>
+	<entry key="user">root</entry>
+	<entry key="password">coprotil</entry>
+</properties>
