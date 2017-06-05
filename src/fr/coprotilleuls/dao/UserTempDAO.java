@@ -31,6 +31,8 @@ public class UserTempDAO {
 	
 	private static final String INSERT_NEW_COMPTE ="INSERT INTO USERS_TEMP (champs1, champs2, used) VALUES (?, ?, ?) ";
 	
+	private static final String DELETE_COMPTE_TEMP ="DELETE FROM USERS_TEMP WHERE champs1 = ? AND champs2 = ? ";
+	
 	public static boolean testFirstLogin(String login, String password) throws SQLException{
 		
 		boolean firstLogin;
@@ -122,4 +124,32 @@ public class UserTempDAO {
 		
 		return result;
 	}
+
+	public static boolean delete(String idTemp, String mdpTemp) throws SQLException {
+	
+		boolean result;
+		
+		try{
+			cnx = AccesBase.getConnection();
+			rqt = cnx.prepareStatement(DELETE_COMPTE_TEMP);
+			rqt.setString(1, idTemp);
+			rqt.setString(2, mdpTemp);
+			int retour = rqt.executeUpdate();
+			
+			if (retour == 1){
+				result = true;
+			}	
+			else {
+				result = false;
+			}
+			
+		}finally{
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		
+		return result;
+		
+	}
 }
+

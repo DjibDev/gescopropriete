@@ -33,12 +33,12 @@ CREATE TABLE ROLES (
     libelle VARCHAR(50) NOT NULL
 );
 
-	CREATE TABLE USERS_TEMP (
+CREATE TABLE USERS_TEMP (
 		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		champs1 VARCHAR(20) NOT NULL,
 		champs2 VARCHAR(80) NOT NULL,
 		used BIT DEFAULT 0
-	);
+);
 
 CREATE TABLE RESIDENTS (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -123,12 +123,9 @@ INSERT INTO BATIMENTS (code, adresse) VALUES
 ("B3D", "61 Avenue de la Cholière"),
 ("B3E", "63 Avenue de la Cholière");
 
-INSERT INTO APPARTEMENTS (num_syndic, porte, etage, batiment) VALUES
-(null, 2, 3, "B1"),(null, 4, 2, "B3D");
 
 INSERT INTO ROLES (id, libelle) 
 VALUES ("COPRO", "Co-propriétaire"),("ADMIN", "Administrateur"), ("COSYN", "Conseiller Syndical"),("GSACT","Gestionnaire d'Activités"), ("LOCAT","Locataire");
-
 
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
 VALUES ("Durand", "Paul", "0101010101","pdurande@gmail.com" ,"jbl", "976bfa507a8aa45f4e440201a121ea32dea14ba0a2ef5c3f7339d824c47407ed", NOW(), "Propriétaire résident" , true, "COPRO");
@@ -139,7 +136,7 @@ VALUES ("Admin", "Test", "0637066255","test@gmail.com" ,"test", "9f86d081884c7d6
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
 VALUES ("Martin", "Luc", "0102030405","test2@gmail.com" ,"test2", "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", NOW(), "Locataire" ,false, "LOCAT");
 
-INSERT INTO RESIDENTS_APPARTEMENTS (residents, appartements) VALUES (1,1),(2,1),(3,2);
+INSERT INTO RESIDENTS_APPARTEMENTS (residents, appartements) VALUES (1,85),(2,14),(3,51);
 
 INSERT INTO AGENDAS (libelle ,annee) VALUES ("Composteur", 2017),("Activités des enfants", 2017), ("Reservation des salles", 2017);
 

@@ -35,7 +35,9 @@
 				<legend>
 					<b>Inscription</b> - Veuillez rentrer vos informations
 				</legend>
-
+				<input type="hidden" value="${requestScope['idTemp']}"  name="idTemp" />	
+				<input type="hidden" value="${requestScope['mdpTemp']}" name="mdpTemp" />	
+				
 				<!-- Text input-->
 
 				<div class="form-group">

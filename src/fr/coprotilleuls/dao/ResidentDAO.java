@@ -45,6 +45,8 @@ public class ResidentDAO {
 			+ "INNER JOIN ROLES r ON res.role = r.id "
 			+ "WHERE res.id = ? ";
 	
+	private static final String INSERT_ONE = "INSERT INTO RESIDENTS (nom, prenom, login, mot_de_passe, tel, email, date_inscription, type_res, actif, role) "
+			+ "VALUES (?, ?, ?, ?, ?, ?, NOW(), ?, 1, ?) ";
 	
 	public static Resident login(String login, String password) throws SQLException{
 
@@ -71,7 +73,6 @@ public class ResidentDAO {
 		}
 		return resident;
 	}
-	
 	
 	public static List<Resident> getAll() throws SQLException{
 			
@@ -130,7 +131,6 @@ public class ResidentDAO {
 			return listeResident;
 		}	
 		
-	
 	public static Resident RecupProfil(int id) throws SQLException{
 		
 		try{
@@ -183,5 +183,40 @@ public class ResidentDAO {
 		}
 		return resident;
 	}
+
+	public static Boolean insert(Resident resident)	throws SQLException {
+		boolean result;
+
+		try {
+			cnx = AccesBase.getConnection();
+			rqt = cnx.prepareStatement(INSERT_ONE);
+			rqt.setString(1, resident.getNom());
+			rqt.setString(2, resident.getPrenom());
+			rqt.setString(3, resident.getLogin());
+			rqt.setString(4, resident.getMot_de_passe());
+			rqt.setString(5, resident.getTel());
+			rqt.setString(6, resident.getEmail());
+			rqt.setString(7, resident.getType_res());
+			rqt.setString(8, resident.getRole().getId());
+			
+			int retour = rqt.executeUpdate();
+
+			if (retour == 1) {
+				result = true;
+			} else {
+				result = false;
+			}
+
+		} finally {
+			if (rqt != null)
+				rqt.close();
+			if (cnx != null)
+				cnx.close();
+		}
+
+		return result;
+		
+	}
+	
 
 }

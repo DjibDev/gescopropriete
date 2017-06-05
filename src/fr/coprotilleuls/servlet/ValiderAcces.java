@@ -97,6 +97,9 @@ public class ValiderAcces extends HttpServlet {
 		try {
 			premiereConnexion = UserTempDAO.testFirstLogin(login, password);
 			if (premiereConnexion) {
+				request.setAttribute("idTemp", login);
+				request.setAttribute("mdpTemp",password);
+				
 				redirectionInscription(request, response);
 			} else {
 				// chriffrement du mot de passe

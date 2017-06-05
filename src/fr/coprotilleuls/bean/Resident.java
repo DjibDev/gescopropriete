@@ -68,13 +68,16 @@ public class Resident {
 		return nom;
 	}
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.nom = nom.toUpperCase();
 	}
 	public String getPrenom() {
 		return prenom;
 	}
+	
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+		String first = prenom.substring(0, 1).toUpperCase();
+		String reste = prenom.substring(1, prenom.length());
+		this.prenom = first+reste;
 	}
 	public String getTel() {
 		return tel;
