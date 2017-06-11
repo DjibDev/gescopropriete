@@ -17,6 +17,7 @@ import fr.coprotilleuls.utils.AccesBase;
 
 public class ResidentDAO {
 	
+	private static List<Integer> listeLogin = null;	
 	private static List<Resident> listeResident = null;	
 	private static Resident resident = null;
 	private static Appartement appartement = null;
@@ -26,6 +27,8 @@ public class ResidentDAO {
 	private static ResultSet rs = null;
 	
 	private static final String TEST_ACCES_RESIDENT = "SELECT id FROM RESIDENTS WHERE login=? AND mot_de_passe=? ";
+	
+	private static final String TEST_DOUBLON_LOGIN = "SELECT login FROM RESIDENTS ";
 	
 	private static final String SELECT_ALL = "SELECT res.id as Rid, nom, prenom, login, tel, email, date_inscription, type_res, actif, "
 			+ "r.id as idRole, libelle, ra.appartements as numAppart, "
@@ -73,6 +76,33 @@ public class ResidentDAO {
 		}
 		return resident;
 	}
+	
+	public static List<Integer> vérifDoublon() throws SQLException{
+		
+		listeLogin = new ArrayList<Integer>(); 
+		try {
+			cnx = AccesBase.getConnection();
+			rqtS = cnx.createStatement();
+			rs = rqtS.executeQuery(TEST_DOUBLON_LOGIN);
+			
+			while (rs.next()){
+				int login = rs.getInt("login");				
+				listeLogin.add(login);		
+			}
+
+		}finally{
+			if (rs != null)
+				rs.close();
+			if (rqtS != null)
+				rqtS.close();
+			if (cnx != null)
+				cnx.close();
+		}
+		
+		
+		return listeLogin;
+	}	
+	
 	
 	public static List<Resident> getAll() throws SQLException{
 			
@@ -184,12 +214,12 @@ public class ResidentDAO {
 		return resident;
 	}
 
-	public static Boolean insert(Resident resident)	throws SQLException {
-		boolean result;
+	public static int insert(Resident resident)	throws SQLException {
+		int idGenerated;
 
 		try {
 			cnx = AccesBase.getConnection();
-			rqt = cnx.prepareStatement(INSERT_ONE);
+			rqt = cnx.prepareStatement(INSERT_ONE, Statement.RETURN_GENERATED_KEYS);
 			rqt.setString(1, resident.getNom());
 			rqt.setString(2, resident.getPrenom());
 			rqt.setString(3, resident.getLogin());
@@ -198,13 +228,16 @@ public class ResidentDAO {
 			rqt.setString(6, resident.getEmail());
 			rqt.setString(7, resident.getType_res());
 			rqt.setString(8, resident.getRole().getId());
-			
+				
 			int retour = rqt.executeUpdate();
 
+			rs = rqt.getGeneratedKeys();
+			
 			if (retour == 1) {
-				result = true;
+				rs.next();
+				idGenerated = rs.getInt(1);
 			} else {
-				result = false;
+				idGenerated = 0;
 			}
 
 		} finally {
@@ -214,7 +247,7 @@ public class ResidentDAO {
 				cnx.close();
 		}
 
-		return result;
+		return idGenerated;
 		
 	}
 	

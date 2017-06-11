@@ -95,6 +95,7 @@ public class ValiderAcces extends HttpServlet {
 		// redirige vers l'inscription
 		Boolean premiereConnexion;
 		try {
+
 			premiereConnexion = UserTempDAO.testFirstLogin(login, password);
 			if (premiereConnexion) {
 				request.setAttribute("idTemp", login);
@@ -110,11 +111,6 @@ public class ValiderAcces extends HttpServlet {
 				if (!("".equals(passwordChiffre))) {
 
 					try {
-
-						// on vérifie s'il s'agit de la premiere connexion
-						// (login et mot de passe attribué,
-						// dans ce cas on redirige l'utilisateur vers un
-						// formulaire d'inscription
 
 						Resident testConnexion = ResidentDAO.login(login,
 								passwordChiffre);
@@ -194,15 +190,29 @@ public class ValiderAcces extends HttpServlet {
 	private void redirectionInscription(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		try {
+			List<Integer> listeLogin = ResidentDAO.vérifDoublon();
+			request.setAttribute("listeLogin", listeLogin);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher("/login/inscription_jsp");
 		dispatcher.forward(request, response);
 
 	}
 
+	
 	private void redirectionMenuLocataire(HttpServletRequest request,
-			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/locat/accueil_locat_jsp");
+		dispatcher.forward(request, response);
+		
 
 	}
 

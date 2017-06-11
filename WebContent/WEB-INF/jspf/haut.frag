@@ -40,7 +40,7 @@
 				</div>
 	
 				<div id="blocBoutons">
-					<form method="POST" action="">
+					<form method="POST" action=""<%=request.getContextPath()%>/login/monCompte">
 	            	<button type="submit" class="btn btn-primary center-block" id="moncompte" >Mon Compte</button>
 	            	</form>
 	            	

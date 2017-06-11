@@ -129,14 +129,14 @@ public class AppartementDAO {
 		return result;
 	}
 
-	public static Boolean lierResidentAppartement(Resident resident,int numAppart) throws SQLException {
+	public static Boolean lierResidentAppartement(int idResident,int numAppart) throws SQLException {
 
 		boolean result;
 
 		try {
 			cnx = AccesBase.getConnection();
 			rqt = cnx.prepareStatement(LIER_RESIDENT_APPARTEMENTS);
-			rqt.setInt(1, resident.getId());
+			rqt.setInt(1, idResident);
 			rqt.setInt(2, numAppart);
 			int retour = rqt.executeUpdate();
 

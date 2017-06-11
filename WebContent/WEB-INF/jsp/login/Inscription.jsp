@@ -30,7 +30,7 @@
 			action="<%=request.getContextPath()%>/login/valider_inscription"
 			method="post" name="formInscription">
 			<fieldset>
-
+				
 				<!-- Form Name -->
 				<legend>
 					<b>Inscription</b> - Veuillez rentrer vos informations
