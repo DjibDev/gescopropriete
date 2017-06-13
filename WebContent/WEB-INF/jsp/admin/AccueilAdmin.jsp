@@ -35,6 +35,7 @@
 					<th>Inscrit le</th>
 					<th>Type D'accès</th>
 					<th>Actif</th>
+					<th>Sélection</th>
 
 				</tr>
 			</thead>
@@ -66,6 +67,10 @@
 					<c:if test="${not personne.actif}">
 						<td>non</td>
 					</c:if>
+					<form method="GET" action="<%=request.getContextPath()%>/admin/edit_users" />
+						<input type="hidden" name="idResident" value="${personne.id}" />
+						<td><input type="submit" id="Editer" Value="Editer" /></td>
+					</form>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -74,4 +79,7 @@
 
 </div>
 
+
 <%@ include file="../../jspf/bas.frag"%>
+
+

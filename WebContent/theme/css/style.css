@@ -71,5 +71,28 @@ input[type="number"] {
    width:50px;
 }
 
+#editUser label {
+	display: block;
+	margin-left:50px
+}
 
+#editUser input {
+	display: block;
+	margin-left:50px
+}
 
+#editUser select {
+	display: block;
+	margin-left:50px
+}
+
+#profilResident {
+	color:blue;
+	font-weight: bold;
+}
+
+h4 {
+	margin-left:50px
+}
+	
+}

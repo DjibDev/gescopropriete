@@ -54,6 +54,7 @@
 		  			Développé par <a href="http://djibdev.net">djibdev.net</a>
 				</div>
 		</div>
-
+		
 </body>
 </html>
+

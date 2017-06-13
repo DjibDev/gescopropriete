@@ -39,8 +39,7 @@
     <servlet-name>AfficherInscription</servlet-name>
     <url-pattern>/login/inscription_jsp</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <display-name>AfficherMenuLocat</display-name>
     <servlet-name>AfficherMenuLocat</servlet-name>
     <jsp-file>/WEB-INF/jsp/locat/AccueilLocat.jsp</jsp-file>
@@ -48,5 +47,14 @@
   <servlet-mapping>
     <servlet-name>AfficherMenuLocat</servlet-name>
     <url-pattern>/locat/accueil_locat_jsp</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <display-name>EditerUsers</display-name>
+    <servlet-name>EditerUsers</servlet-name>
+    <jsp-file>/WEB-INF/jsp/admin/EditUsers.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditerUsers</servlet-name>
+    <url-pattern>/admin/edit_users_jsp</url-pattern>
   </servlet-mapping>
 </web-app>
