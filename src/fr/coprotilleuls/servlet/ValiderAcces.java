@@ -191,7 +191,7 @@ public class ValiderAcces extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			List<Integer> listeLogin = ResidentDAO.vérifDoublon();
+			List<String> listeLogin = ResidentDAO.getListeLogin();
 			request.setAttribute("listeLogin", listeLogin);
 			
 		} catch (SQLException e) {
@@ -199,7 +199,7 @@ public class ValiderAcces extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispatcher = request
+		RequestDispatcher dispatcher 	= request
 				.getRequestDispatcher("/login/inscription_jsp");
 		dispatcher.forward(request, response);
 

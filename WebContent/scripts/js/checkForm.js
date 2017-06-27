@@ -6,7 +6,7 @@ function decode(s) {
   return decodeURIComponent(escape(s));
 }
 
-// fonction qui s"assure que la formulaire d'inscription est correctement rempli
+// fonction qui s'assure que la formulaire d'inscription est correctement rempli
 function validFormInscription(){
 	var valide = true;
 	var msgErreurs = new Array();
@@ -18,7 +18,7 @@ function validFormInscription(){
 
 	var divErreur = $('#erreurs');
 	var nom = $('#nom').val().trim().length;
-	var prenom = $('#nom').val().trim().length;
+	var prenom = $('#prenom').val().trim().length;
 	var email = $('#email').val().trim();
 	var tel =  $('#telephone').val().trim();
 	var porte = $('#porte').val();
@@ -84,6 +84,14 @@ function validFormInscription(){
 		i++;
 	}
 	
+	// si l'identifiant saisi est dans le tableau listeIdentifiantsReserves (globales)
+	if (listeIdentifiantsReserves.indexOf(login) != -1){
+		valide = false;
+		msgErreurs[i] ="* Cet identifiant a déjà été réservé.";
+		i++;
+	}
+	
+	
 	if (!mdp.match(regexLoginMdP)){
 		valide = false;
 		msgErreurs[i] ="* Le mot de passe ne respecte pas les règles.";
@@ -140,6 +148,8 @@ function validChangePassword(){
 		document.formChangePassword.password.focus();
 	}
 
+	
+	
 	/*réinitialisation la zone erreur*/
 	document.getElementById("erreurs").innerHTML = "";
 

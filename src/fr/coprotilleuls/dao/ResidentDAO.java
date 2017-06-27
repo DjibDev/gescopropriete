@@ -17,10 +17,10 @@ import fr.coprotilleuls.utils.AccesBase;
 
 public class ResidentDAO {
 	
-	private static List<Integer> listeLogin = null;	
+	private static List<String> listeLogin = null;	
 	private static List<Resident> listeResident = null;	
 	private static Resident resident = null;
-	private static Appartement appartement = null;
+
 	private static Connection cnx = null;
 	private static Statement rqtS = null;
 	private static PreparedStatement rqt = null;
@@ -28,7 +28,7 @@ public class ResidentDAO {
 	
 	private static final String TEST_ACCES_RESIDENT = "SELECT id FROM RESIDENTS WHERE login=? AND mot_de_passe=? ";
 	
-	private static final String TEST_DOUBLON_LOGIN = "SELECT login FROM RESIDENTS ";
+	private static final String SELECT_ALL_LOGIN = "SELECT login FROM RESIDENTS ";
 	
 	private static final String SELECT_ALL = "SELECT res.id as Rid, nom, prenom, login, tel, email, date_inscription, type_res, actif, "
 			+ "r.id as idRole, libelle, ra.appartements as numAppart, "
@@ -77,16 +77,16 @@ public class ResidentDAO {
 		return resident;
 	}
 	
-	public static List<Integer> vérifDoublon() throws SQLException{
+	public static List<String> getListeLogin() throws SQLException{
 		
-		listeLogin = new ArrayList<Integer>(); 
+		listeLogin = new ArrayList<String>(); 
 		try {
 			cnx = AccesBase.getConnection();
 			rqtS = cnx.createStatement();
-			rs = rqtS.executeQuery(TEST_DOUBLON_LOGIN);
+			rs = rqtS.executeQuery(SELECT_ALL_LOGIN);
 			
 			while (rs.next()){
-				int login = rs.getInt("login");				
+				String login = rs.getString("login");				
 				listeLogin.add(login);		
 			}
 

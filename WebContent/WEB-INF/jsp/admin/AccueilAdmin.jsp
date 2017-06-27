@@ -69,7 +69,7 @@
 					</c:if>
 					<form method="GET" action="<%=request.getContextPath()%>/admin/edit_users" />
 						<input type="hidden" name="idResident" value="${personne.id}" />
-						<td><input type="submit" id="Editer" Value="Editer" /></td>
+						<td><input type="submit" class="btn btn-primary" id="Editer" Value="Editer" /></td>
 					</form>
 					</tr>
 				</c:forEach>

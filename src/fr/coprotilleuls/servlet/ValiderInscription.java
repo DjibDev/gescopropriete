@@ -1,4 +1,4 @@
-package fr.coprotilleuls.servlet;
+	package fr.coprotilleuls.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.coprotilleuls.bean.Appartement;
 import fr.coprotilleuls.bean.Resident;
 import fr.coprotilleuls.bean.Role;
 import fr.coprotilleuls.dao.AppartementDAO;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page session="false"%>
@@ -17,6 +18,8 @@
 	src="<%=request.getContextPath()%>/scripts/js/jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/scripts/js/checkForm.js"></script>
+	<script type="text/javascript"
+	src="<%=request.getContextPath()%>/scripts/js/globales.js"></script>
 </head>
 <body>
 	<div class="jumbotron text-center ">
@@ -25,10 +28,16 @@
 	</div>
 
 	<div class="container">
+		
+		<c:set  var = "listeLogin" scope = "request" value = "${listeLogin}"/>
+		<input type="hidden" id="longueurListeLogin" value="${fn:length(listeLogin)}" />
+		<c:forEach var="login" items="${requestScope['listeLogin']}" varStatus="loop" >
+			<input type="hidden" id="login_${loop.index}" value="${login}" />
+		</c:forEach>
 
 		<form class="well form-horizontal"
 			action="<%=request.getContextPath()%>/login/valider_inscription"
-			method="post" name="formInscription">
+			method="post" name="formInscription" >
 			<fieldset>
 				
 				<!-- Form Name -->
@@ -157,7 +166,7 @@
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-log-in"></i></span> <input
 								name="identifiant" placeholder="Identifiant" id="identifiant"
-								class="form-control" type="text">
+								class="form-control" type="text" />
 						</div>
 					</div>
 				</div>
@@ -200,8 +209,7 @@
 						<button class="btn btn-primary" onclick="history.go(-1)">Retour</button>
 					</div>
 					<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
-						<button type="submit" class="btn btn-success"
-							onClick="return validFormInscription()">Valider</button>
+						<button type="submit" class="btn btn-success" onclick="return validFormInscription()">Valider</button>
 					</div>
 				</div>
 				<br />
@@ -210,5 +218,22 @@
 		</form>
 	</div>
 
-
+	
 	<%@ include file="../../jspf/bas.frag"%>
+	
+	<script>
+	
+	$( document ).ready(function() {
+		var NbIdentifdiant = $('#longueurListeLogin').val();
+		
+		console.log("nbr identifiant : " + NbIdentifdiant);
+		
+		for (var i = 0; i < NbIdentifdiant; i++) {
+			listeIdentifiantsReserves[i] = $('#login_'+i).val();
+		}
+		
+		
+	});
+		
+		
+	</script>

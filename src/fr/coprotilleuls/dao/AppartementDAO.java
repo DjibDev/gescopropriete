@@ -6,13 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import fr.coprotilleuls.bean.Appartement;
 import fr.coprotilleuls.bean.Batiment;
-import fr.coprotilleuls.bean.Resident;
-import fr.coprotilleuls.bean.Role;
 import fr.coprotilleuls.utils.AccesBase;
 
 public class AppartementDAO {

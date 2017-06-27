@@ -42,7 +42,7 @@
 										<td>${comptetemp.champs1}</td>
 		    							<td>${comptetemp.champs2}</td>
 			    						<td><input type="email" name="email" size="50px" /></td>
-			    						<td><input type="button" name="attribuer" value="Attribuer"/></td>
+			    						<td><input type="button" class="btn btn-primary" name="attribuer" value="Attribuer"/></td>
 			    						</form>		    							
     							</tr>
     						
@@ -58,7 +58,7 @@
 				<form method="post" action="<%=request.getContextPath()%>/admin/generer_compte_temp" >
 					<label>Combien en faut-il ?</label>
 					<input type="number" name="nbrIdToGenerate"  min="1" max="50" />
-					<input type="submit" value="Générer" name="generateId" />
+					<input type="submit" class="btn btn-primary" value="Générer" name="generateId" />
 				</form>
 				
 

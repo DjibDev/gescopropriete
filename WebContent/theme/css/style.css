@@ -1,6 +1,13 @@
 body {
+	width: 100%;
+	margin: 0px;
     font-size: 1.2em;
 }
+
+h4 {
+	margin-left:50px
+}
+	
 
 /* banniere et haut du site */
 #imageBanniereIndex {
@@ -91,8 +98,7 @@ input[type="number"] {
 	font-weight: bold;
 }
 
-h4 {
+/* boutons de navigation */
+#navButton {
 	margin-left:50px
-}
-	
 }

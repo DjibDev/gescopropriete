@@ -22,19 +22,24 @@
 				${personne.nom}</span>
 		</h4>
 
-		<form align="center" method="POST"
-			action="<%=request.getContextPath()%>/admin/edit_users" id="editUser" />
-
-		<label for="role">Rôle</label> 
+		
+	<form align="center" method="POST" action="<%=request.getContextPath()%>/admin/edit_users" id="editUser" >
+		<label for="role">Changer de rôle ?</label> 
 		<select name="role">
 			<c:forEach var="role" items="${requestScope['listeRoles']}">
-				<c:if test="${role.id == personne.role.id}">
-					<option value="${role.id}" selected="selected">${role.libelle}</option>
-				</c:if>
-				<option value="${role.id}">${role.libelle}</option>
+				<c:choose>
+					<c:when test="${role.id == personne.role.id}">
+						<option value="${role.id}" selected="selected">${role.libelle}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${role.id}">${role.libelle}</option>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</select> 
-		<br /> <label for="actif">Actif ? </label> <select name="actif">
+		<br /> 
+		<label for="actif">Activer le compte ? </label> 
+		<select	name="actif">
 			<c:if test="${personne.actif}">
 				<option value="oui" selected>Oui</option>
 				<option value="non">Non</option>
@@ -43,9 +48,14 @@
 				<option value="oui">Oui</option>
 				<option value="non" selected>Non</option>
 			</c:if>
-		</select> <br /> <input type="hidden" name="idRresident"
-			value="${personne.id}" /> <input type="submit" id="Enregistrer"
-			Value="Enregistrer" />
+		</select> 
+		<br /> 
+
+			<input type="hidden" name="idRresident"	value="${personne.id}" />
+		<div id="navButton">
+			<a href="<%=request.getContextPath()%>/admin/liste_inscrits" class="btn btn-primary">Retour</a>
+			<button type="submit" class="btn btn-primary" id="Enregistrer">Enregistrer</button>
+		</div>
 		</form>
 
 	</div>

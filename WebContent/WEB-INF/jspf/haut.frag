@@ -18,7 +18,7 @@
  	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/jquery/jquery-2.2.3.js"></script>
  	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/datatables.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/datatable_lang_fr.js"></script>
-  	
+  	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/js/fonctions.js"></script>
  
   
 </head>
