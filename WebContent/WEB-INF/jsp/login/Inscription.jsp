@@ -206,7 +206,7 @@
 				<div class="form-group">
 					<label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 control-label"></label>
 					<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
-						<button class="btn btn-primary" onclick="history.go(-1)">Retour</button>
+						<button type="button" class="btn btn-success" id="retour" onclick="location.href='<%=request.getContextPath()%>/'" >Retour</button>
 					</div>
 					<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
 						<button type="submit" class="btn btn-success" onclick="return validFormInscription()">Valider</button>
@@ -225,15 +225,12 @@
 	
 	$( document ).ready(function() {
 		var NbIdentifdiant = $('#longueurListeLogin').val();
-		
-		console.log("nbr identifiant : " + NbIdentifdiant);
-		
 		for (var i = 0; i < NbIdentifdiant; i++) {
 			listeIdentifiantsReserves[i] = $('#login_'+i).val();
 		}
 		
-		
 	});
 		
+
 		
 	</script>

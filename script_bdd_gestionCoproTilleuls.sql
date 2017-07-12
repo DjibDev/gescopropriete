@@ -10,6 +10,7 @@ DROP TABLE MESSAGES;
 DROP TABLE BILLETS;
 DROP TABLE CATEGORIES;
 DROP TABLE AGENDAS;
+DROP TABLE ACTIVITES;
 DROP TABLE RESIDENTS;
 DROP TABLE ROLES;
 DROP TABLE USERS_TEMP;
@@ -93,10 +94,19 @@ CREATE TABLE MESSAGES (
 	CONSTRAINT fk_messages_residents FOREIGN KEY (createur) REFERENCES RESIDENTS(id)
 );
 
+CREATE TABLE ACTIVITES ( 
+	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	libelle VARCHAR(50) NOT NULL,
+	actif BIT DEFAULT 1
+);
+
 CREATE TABLE AGENDAS ( 
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	libelle VARCHAR(50) NOT NULL,
-    annee int(4) NOT NULL
+    annee int(4) NOT NULL,
+	actif BIT DEFAULT 1,
+	activites INT(11) NOT NULL,
+	CONSTRAINT fk_agendas_activites FOREIGN KEY (activites) REFERENCES ACTIVITES(id)
 );
 
 CREATE TABLE EVENEMENTS ( 
@@ -125,7 +135,7 @@ INSERT INTO BATIMENTS (code, adresse) VALUES
 
 
 INSERT INTO ROLES (id, libelle) 
-VALUES ("COPRO", "Co-propriétaire"),("ADMIN", "Administrateur"), ("COSYN", "Conseiller Syndical"),("GSACT","Gestionnaire d'Activités"), ("LOCAT","Locataire");
+VALUES ("COPRO", "Accès Co-propriétaire"),("ADMIN", "Accès Administrateur"), ("COSYN", "Accès Conseiller Syndical"),("GSACT","Accès Gestionnaire d'Activités"), ("LOCAT","Accès Standard");
 
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
 VALUES ("Durand", "Paul", "0101010101","pdurande@gmail.com" ,"jbl", "976bfa507a8aa45f4e440201a121ea32dea14ba0a2ef5c3f7339d824c47407ed", NOW(), "Propriétaire résident" , true, "COPRO");
@@ -134,11 +144,15 @@ INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscri
 VALUES ("Admin", "Test", "0637066255","test@gmail.com" ,"test", "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", NOW(), "Propriétaire non-résident" , true, "ADMIN");
 
 INSERT INTO RESIDENTS (nom, prenom, tel, email, login, mot_de_passe, date_inscription, type_res, actif, role) 
-VALUES ("Martin", "Luc", "0102030405","test2@gmail.com" ,"test2", "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", NOW(), "Locataire" ,false, "LOCAT");
+VALUES ("Martin", "Luc", "0102030405","test2@gmail.com" , "test2", "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", NOW(), "Propriétaire non-résident" , true, "LOCAT");
 
-INSERT INTO RESIDENTS_APPARTEMENTS (residents, appartements) VALUES (1,85),(2,14),(3,51);
+INSERT INTO APPARTEMENTS (num_syndic, porte, etage, batiment) VALUES (null, 4, 2, "B3D"),(null, 2, 3, "B1"),(null, 1, 0, "B2");
 
-INSERT INTO AGENDAS (libelle ,annee) VALUES ("Composteur", 2017),("Activités des enfants", 2017), ("Reservation des salles", 2017);
+INSERT INTO RESIDENTS_APPARTEMENTS (residents, appartements) VALUES (1,1),(2,2),(3,3);
+
+INSERT INTO ACTIVITES (libelle) VALUES ("Composte"), ("Enfants"), ("Réservation Salles");
+
+INSERT INTO AGENDAS (libelle ,annee, activites) VALUES ("Composteur sur 2017", 2017, 1 ),("Activités des enfants sur 2017", 2017, 2 ), ("Réservations des salles sur 2017", 2017, 3);
 
 
 

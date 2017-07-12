@@ -11,22 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.coprotilleuls.bean.Resident;
+import fr.coprotilleuls.bean.Activite;
+import fr.coprotilleuls.bean.Agenda;
 import fr.coprotilleuls.bean.UserTemp;
-import fr.coprotilleuls.dao.ResidentDAO;
+import fr.coprotilleuls.dao.ActiviteDAO;
+import fr.coprotilleuls.dao.AgendaDAO;
 import fr.coprotilleuls.dao.UserTempDAO;
 
 /**
- * Servlet implementation class GestionUsers
+ * Servlet implementation class GestionCalendriers
  */
-@WebServlet("/admin/gestion_user")
-public class GestionUsers extends HttpServlet {
+@WebServlet("/admin/gestion_calendriers")
+public class GestionCalendriers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GestionUsers() {
+    public GestionCalendriers() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,23 +37,32 @@ public class GestionUsers extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// afficher la page de gestion des users
-				
-		List<UserTemp> listeUtilisateursTemporaires = null;
 		
+		List<Activite> listeActivites = null;
 		try {
-			listeUtilisateursTemporaires = UserTempDAO.getAllDispo();
+			listeActivites = ActiviteDAO.getAllActif();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("listeUtilisateursTemporaires", listeUtilisateursTemporaires);
+		request.setAttribute("listeActivites", listeActivites);
+			
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/gestion_users_jsp");
+		List<Agenda> listeCalendriers = null;
+		try {
+			listeCalendriers = AgendaDAO.getAllActif();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("listeCalendriers", listeCalendriers);
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/gestion_calendriers_jsp");
 		dispatcher.forward(request, response);
 
-		
 	}
 
 	/**

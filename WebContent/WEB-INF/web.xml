@@ -48,7 +48,7 @@
     <servlet-name>AfficherMenuLocat</servlet-name>
     <url-pattern>/locat/accueil_locat_jsp</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <display-name>EditerUsers</display-name>
     <servlet-name>EditerUsers</servlet-name>
     <jsp-file>/WEB-INF/jsp/admin/EditUsers.jsp</jsp-file>
@@ -57,4 +57,13 @@
     <servlet-name>EditerUsers</servlet-name>
     <url-pattern>/admin/edit_users_jsp</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <display-name>GestionCalendriers</display-name>
+    <servlet-name>GestionCalendriers</servlet-name>
+    <jsp-file>/WEB-INF/jsp/admin/GestionCalendriers.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionCalendriers</servlet-name>
+    <url-pattern>/admin/gestion_calendriers_jsp</url-pattern>
+  </servlet-mapping> 
 </web-app>
