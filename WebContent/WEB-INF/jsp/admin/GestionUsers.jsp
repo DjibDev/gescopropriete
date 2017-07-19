@@ -7,7 +7,7 @@
 					  <li><a href="<%=request.getContextPath()%>/admin/liste_inscrits">Liste des inscrits</a></li>
 					  <li class="active"><a>Gestion des Utilisateurs</a></li>
 					  <li><a href="#">Gérer les forums</a></li>
-					  <li><a href="#">Gérer les calendriers</a></li>
+					  <li><a href="<%=request.getContextPath()%>/admin/gestion_calendriers">Gérer les calendriers</a></li>
 					  <li><a href="#">Gérer les projets</a></li>.
 					  <li><a href="#">...</a></li>
 					</ul>

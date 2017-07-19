@@ -23,7 +23,7 @@ public class AgendaDAO {
 
 	private static final String SELECT_BY_ID = "SELECT libelle, annee, actif, activites FROM AGENDAS WHERE id = ? ";
 	
-	private static final String SELECT_ALL = "SELECT libelle, annee, actif, activites FROM AGENDAS";
+	private static final String SELECT_ALL_ACTIF = "SELECT libelle, annee, actif, activites FROM AGENDAS WHERE actif = ? ";
 
 	private static final String INSERT_ONE = "INSERT INTO AGENDAS (libelle, annee , actif, activites) VALUES (?, ?, ?) ";
 
@@ -66,8 +66,9 @@ public class AgendaDAO {
 		listeAgenda = new ArrayList<Agenda>();
 		try {
 			cnx = AccesBase.getConnection();
-			rqtS = cnx.createStatement();
-			rs = rqtS.executeQuery(SELECT_ALL);
+			rqt = cnx.prepareStatement(SELECT_ALL_ACTIF);
+			rqt.setBoolean(1, true);
+			rs = rqt.executeQuery();
 
 			while (rs.next()) {
 				agenda = new Agenda();
@@ -82,8 +83,8 @@ public class AgendaDAO {
 		} finally {
 			if (rs != null)
 				rs.close();
-			if (rqtS != null)
-				rqtS.close();
+			if (rqt != null)
+				rqt.close();
 			if (cnx != null)
 				cnx.close();
 		}
